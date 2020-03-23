@@ -12,14 +12,24 @@
       <input type="submit">
     </form>
 
+    <ul>
+
     <?php
     $filename = 'friends.txt';
-    $file = fopen($filename, "r");
+    $file = fopen($filename, "a") or die("Unable to open file!");
+    $new_name = $_POST[name];
+    fwrite($file, $new_name);
+    fclose($file);
+
+    $file = fopen($filename, "r") or die("Unable to open file!");
     while (!feof($file)) {
       $name = fgets($file);
       echo "<li>$name</li>";
     }
-    echo "lol";
+    fclose($file);
+
+
      ?>
+    </ul>
   </body>
 </html>
