@@ -13,6 +13,12 @@
     </form>
 
     <?php
+    $filename = 'friends.txt';
+    $file = fopen($filename, "r");
+    while (!feof($file)) {
+      $name = fgets($file);
+      echo "<li>$name</li>";
+    }
     echo "lol";
      ?>
   </body>
