@@ -15,6 +15,8 @@
     <ul>
 
     <?php
+
+    $filter = "";
     $filename = 'friends.txt';
     $file = fopen($filename, "a") or die("Unable to open file!");
     $new_name = $_POST[name];
@@ -24,8 +26,11 @@
     $file = fopen($filename, "r") or die("Unable to open file!");
     while (!feof($file)) {
       $name = fgets($file);
-      if (strcmp($name, "") != 0)
-        echo "<li>" . $name . "</li>";
+      if (strcmp($name, "") != 0) {
+        if (strcmp($filter, "") != 0 && strcmp($filter, $name)) {
+          echo "<li>" . $name . "</li>";
+        }
+      }
     }
     fclose($file);
 
