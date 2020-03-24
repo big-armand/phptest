@@ -28,7 +28,14 @@
     while (!feof($file)) {
       $name = fgets($file);
       if (strcmp($name, "") != 0) {
-        if (strcmp($filter, "") == 0 || strstr($name, $filter) != false) {
+        if (strcmp($filter, "") == 0) {
+          echo "<li>" . $name . "</li>";
+        }
+        elseif ($_POST["startingWith"]) {
+          if (strpos($name, $filter) !== false)
+            echo "<li>" . $name . "</li>";
+        }
+        elseif (strstr($name, $filter) != false) {
           echo "<li>" . $name . "</li>";
         }
       }
@@ -41,6 +48,7 @@
 
     <form class="" action="index.php" method="post">
       Filter: <input type="text" name="filter" value="">
+      <input type="checkbox" name="startingWith" <?php if ($startingWith=='TRUE') echo "checked"?> value="TRUE">Only names starting with</input>
       <input type="submit" value="Filter list">
     </form>
 
