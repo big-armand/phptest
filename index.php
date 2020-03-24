@@ -29,6 +29,8 @@
     while (!feof($file)) {
       $name = fgets($file);
       if (strcmp($name, "") != 0) {
+        echo $filter . "test";
+        echo $name . "test";
         if (strcmp($filter, "") == 0 || strcmp($filter . " ", $name) == 0) {
           echo "<li>" . $name . "</li>";
         }
