@@ -24,8 +24,8 @@
     $file = fopen($filename, "r") or die("Unable to open file!");
     while (!feof($file)) {
       $name = fgets($file);
-      if (strcmp($name, "\n") != 0)
-        echo "<li>l" . $name . "l</li>";
+      if (strcmp($name, "") != 0)
+        echo "<li>" . $name . "</li>";
     }
     fclose($file);
 
