@@ -17,6 +17,7 @@
     <?php
 
     $filter = $_POST["filter"];
+    echo $filter;
     $filename = 'friends.txt';
     $file = fopen($filename, "a") or die("Unable to open file!");
     $new_name = $_POST["name"];
