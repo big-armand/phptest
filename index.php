@@ -16,7 +16,7 @@
 
     <?php
 
-    $filter = "";
+    $filter = $_POST[filter];
     $filename = 'friends.txt';
     $file = fopen($filename, "a") or die("Unable to open file!");
     $new_name = $_POST[name];
@@ -27,7 +27,7 @@
     while (!feof($file)) {
       $name = fgets($file);
       if (strcmp($name, "") != 0) {
-        if (strcmp($filter, "") != 0 && strcmp($filter, $name)) {
+        if (strcmp($filter, "") != 0 || strcmp($filter, $name)) {
           echo "<li>" . $name . "</li>";
         }
       }
@@ -37,5 +37,11 @@
 
      ?>
     </ul>
+
+    <form class="" action="index.php" method="post">
+      Filter: <input type="text" name="filter" value="">
+      <input type="submit" value="Filter list">
+    </form>
+
   </body>
 </html>
