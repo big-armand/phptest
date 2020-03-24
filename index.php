@@ -16,10 +16,10 @@
 
     <?php
 
-    $filter = $_POST[filter];
+    $filter = $_POST["filter"];
     $filename = 'friends.txt';
     $file = fopen($filename, "a") or die("Unable to open file!");
-    $new_name = $_POST[name];
+    $new_name = $_POST["name"];
     if (strcmp($new_name, "") != 0)
       fwrite($file, $new_name . "\n");
     fclose($file);
