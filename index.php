@@ -25,7 +25,7 @@
     while (!feof($file)) {
       $name = fgets($file);
       if (strcmp($name, "\n") != 0)
-        echo "<li>$name</li>";
+        echo "<li>l" . $name . "l</li>";
     }
     fclose($file);
 
