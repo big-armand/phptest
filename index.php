@@ -20,7 +20,8 @@
     $filename = 'friends.txt';
     $file = fopen($filename, "a") or die("Unable to open file!");
     $new_name = $_POST[name];
-    fwrite($file, $new_name . "\n");
+    if (strcmp($new_name, "") != 0)
+      fwrite($file, $new_name . "\n");
     fclose($file);
 
     $file = fopen($filename, "r") or die("Unable to open file!");
