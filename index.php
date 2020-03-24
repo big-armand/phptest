@@ -28,7 +28,7 @@
     while (!feof($file)) {
       $name = fgets($file);
       if (strcmp($name, "") != 0) {
-        if (strcmp($filter, "") == 0 || strcmp($filter, substr($name, 0, -1)) == 0) {
+        if (strcmp($filter, "") == 0 || strncmp($filter, $name, strlen($filter)) == 0) {
           echo "<li>" . $name . "</li>";
         }
       }
