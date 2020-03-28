@@ -33,8 +33,10 @@
       $arr[] = $new_name;
 
 
-    if ($_POST["delete"])
+    if (isset($_POST["delete"])) {
       unset($arr[$_POST["delete"]]);
+      $arr = array_values($arr);
+    }
 
 
     $file = fopen($filename, "w") or die("Unable to open file!");
@@ -43,7 +45,7 @@
     }
     fclose($file);
 
-    echo "<form action=\"index.php\" method=\"post\">"
+    echo "<form action=\"index.php\" method=\"post\">";
     foreach ($arr as $key => $value) {
       if (strcmp($name, "") != 0) {
         if (strcmp($filter, "") == 0) {
