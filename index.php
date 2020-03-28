@@ -26,7 +26,7 @@
         $arr[] = $name;
     }
     fclose($file);
-
+    echo $arr;
 
     $new_name = $_POST["name"];
     if (strcmp($new_name, "") != 0)
@@ -39,11 +39,11 @@
     }
 
 
-    $file = fopen($filename, "w") or die("Unable to open file!");
-    foreach ($arr as $key => $value) {
-      fwrite($file, $value . "\n");
-    }
-    fclose($file);
+    //$file = fopen($filename, "w") or die("Unable to open file!");
+    //foreach ($arr as $key => $value) {
+      //fwrite($file, $value . "\n");
+    //}
+    //fclose($file);
 
     echo "<form action=\"index.php\" method=\"post\">";
     foreach ($arr as $key => $value) {
