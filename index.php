@@ -22,13 +22,13 @@
     $file = fopen($filename, "r") or die("Unable to open file!");
     while (!feof($file)) {
       $name = fgets($file);
-      if (!strcmp($name, ""))
+      echo $name;
+      if (!strcmp($name, "")) {
+        echo $name;
         $arr[] = $name;
+      }
     }
     fclose($file);
-    foreach ($arr as $key => $value) {
-      echo $value;
-    }
 
     $new_name = $_POST["name"];
     if (strcmp($new_name, "") != 0)
