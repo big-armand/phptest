@@ -22,9 +22,7 @@
     $file = fopen($filename, "r") or die("Unable to open file!");
     while (!feof($file)) {
       $name = fgets($file);
-      echo $name;
       if (strcmp($name, "")) {
-        echo $name;
         $arr[] = $name;
       }
     }
@@ -41,11 +39,11 @@
     }
 
 
-    //$file = fopen($filename, "w") or die("Unable to open file!");
-    //foreach ($arr as $key => $value) {
-      //fwrite($file, $value . "\n");
-    //}
-    //fclose($file);
+    $file = fopen($filename, "w") or die("Unable to open file!");
+    foreach ($arr as $key => $value) {
+      fwrite($file, $value . "\n");
+    }
+    fclose($file);
 
     echo "<form action=\"index.php\" method=\"post\">";
     foreach ($arr as $key => $value) {
