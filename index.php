@@ -37,7 +37,7 @@
             echo "<li>" . $name . "</li>";
         }
         elseif (strstr($name, $filter) != false) {
-          echo "<li>LOL</li>"
+          echo "<li>LOL</li>";
           echo "<li>" . $name . "</li>";
         }
       }
