@@ -26,7 +26,9 @@
         $arr[] = $name;
     }
     fclose($file);
-    echo $arr;
+    foreach ($arr as $key => $value) {
+      echo $value;
+    }
 
     $new_name = $_POST["name"];
     if (strcmp($new_name, "") != 0)
