@@ -23,7 +23,7 @@
     while (!feof($file)) {
       $name = fgets($file);
       echo $name;
-      if (strcmp($name, "") == 0) {
+      if (strcmp($name, "")) {
         echo $name;
         $arr[] = $name;
       }
