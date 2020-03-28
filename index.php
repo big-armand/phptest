@@ -18,6 +18,7 @@
 
     $filter = $_POST["filter"];
     $filename = 'friends.txt';
+    $arr = array();
 
     $file = fopen($filename, "r") or die("Unable to open file!");
     while (!feof($file)) {
@@ -41,12 +42,12 @@
 
     $file = fopen($filename, "w") or die("Unable to open file!");
     foreach ($arr as $key => $value) {
-      fwrite($file, $value . "\n");
+      fwrite($file, $value);
     }
     fclose($file);
 
     echo "<form action=\"index.php\" method=\"post\">";
-    foreach ($arr as $key => $value) {
+    foreach ($arr as $key => $name) {
       if (strcmp($name, "") != 0) {
         if (strcmp($filter, "") == 0) {
           echo "<li>" . $name . "<button type='submit' name='delete' value='$key'>Delete</button></li>";
