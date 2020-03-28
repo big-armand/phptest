@@ -32,10 +32,12 @@
           echo "<li>" . $name . "</li>";
         }
         elseif ($_POST["startingWith"]) {
+          echo "<li>jambon</li>";
           if (strpos($name, $filter) == 0)
             echo "<li>" . $name . "</li>";
         }
         elseif (strstr($name, $filter) != false) {
+          echo "<li>LOL</li>"
           echo "<li>" . $name . "</li>";
         }
       }
