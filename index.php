@@ -18,32 +18,47 @@
 
     $filter = $_POST["filter"];
     $filename = 'friends.txt';
-    $file = fopen($filename, "a") or die("Unable to open file!");
-    $new_name = $_POST["name"];
-    if (strcmp($new_name, "") != 0)
-      fwrite($file, $new_name . "\n");
-    fclose($file);
 
     $file = fopen($filename, "r") or die("Unable to open file!");
     while (!feof($file)) {
       $name = fgets($file);
-      if (strcmp($name, "") != 0) {
-        if (strcmp($filter, "") == 0) {
-          echo "<li>" . $name . "</li>";
-        }
-        elseif ($_POST["startingWith"]) {
-          echo "<li>jambon</li>";
-          if (strpos($name, $filter) === 0)
-            echo "<li>" . $name . "</li>";
-        }
-        elseif (strstr($name, $filter) != false) {
-          echo "<li>LOL</li>";
-          echo "<li>" . $name . "</li>";
-        }
-      }
+      if (!strcmp($name, ""))
+        $arr[] = $name;
     }
     fclose($file);
 
+
+    $new_name = $_POST["name"];
+    if (strcmp($new_name, "") != 0)
+      $arr[] = $new_name;
+
+
+    if ($_POST["delete"])
+      unset($arr[$_POST["delete"]]);
+
+
+    $file = fopen($filename, "w") or die("Unable to open file!");
+    foreach ($arr as $key => $value) {
+      fwrite($file, $value . "\n");
+    }
+    fclose($file);
+
+    echo "<form action=\"index.php\" method=\"post\">"
+    foreach ($arr as $key => $value) {
+      if (strcmp($name, "") != 0) {
+        if (strcmp($filter, "") == 0) {
+          echo "<li>" . $name . "<button type='submit' name='delete' value='$key'>Delete</button></li>";
+        }
+        elseif ($_POST["startingWith"]) {
+          if (strpos($name, $filter) === 0)
+            echo "<li>" . $name . "<button type='submit' name='delete' value='$key'>Delete</button></li>";
+        }
+        elseif (strstr($name, $filter) != false) {
+          echo "<li>" . $name . "<button type='submit' name='delete' value='$key'>Delete</button></li>";
+        }
+      }
+    }
+    echo "</form>"
 
      ?>
     </ul>
